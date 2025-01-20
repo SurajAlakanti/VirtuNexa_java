@@ -25,7 +25,7 @@ public class WeatherApp {
             URL url = new URL(BASE_URL + cityName + "&appid=" + API_KEY + "&units=metric");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
-            connection.setConnectTimeout(5000);  // 5 seconds timeout
+            connection.setConnectTimeout(5000);  
             Scanner scanner = new Scanner(url.openStream());
             StringBuilder response = new StringBuilder();
             while (scanner.hasNext()) {
