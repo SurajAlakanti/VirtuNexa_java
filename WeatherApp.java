@@ -5,7 +5,7 @@ import org.json.JSONObject;
 
 public class WeatherApp {
 
-    private static final String API_KEY = "your_api_key"; // Replace with your OpenWeatherMap API key
+    private static final String API_KEY = "your_api_key"; 
     private static final String BASE_URL = "http://api.openweathermap.org/data/2.5/weather?q=";
 
     public static void main(String[] args) {
