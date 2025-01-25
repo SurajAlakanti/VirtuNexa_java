@@ -1,0 +1,84 @@
+import java.util.*;
+
+public class HealthTipsApp {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+
+        Map<String, List<String>> healthTips = new HashMap<>();
+        healthTips.put("Fitness", Arrays.asList(
+                "Start your day with 10 minutes of stretching to improve flexibility.",
+                "Take a brisk 30-minute walk to boost your heart health.",
+                "Drink water before, during, and after your workout."
+        ));
+        healthTips.put("Stress Relief", Arrays.asList(
+                "Practice deep breathing exercises for 5 minutes to reduce stress.",
+                "Spend 10 minutes meditating in a quiet place.",
+                "Listen to calming music to relax your mind."
+        ));
+        healthTips.put("Weight Loss", Arrays.asList(
+                "Include more vegetables in your meals for low-calorie nutrition.",
+                "Avoid sugary drinks and opt for water or herbal teas.",
+                "Track your daily calorie intake to stay on target."
+        ));
+
+        String userGoal = "";
+
+        while (true) {
+            System.out.println("\nWelcome to Daily Health Tips!");
+            System.out.println("1. Select Health Goal");
+            System.out.println("2. View Today's Health Tip");
+            System.out.println("3. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    System.out.println("\nSelect your health goal:");
+                    System.out.println("1. Fitness");
+                    System.out.println("2. Stress Relief");
+                    System.out.println("3. Weight Loss");
+                    System.out.print("Enter your choice: ");
+                    int goalChoice = scanner.nextInt();
+                    scanner.nextLine();
+
+                    switch (goalChoice) {
+                        case 1:
+                            userGoal = "Fitness";
+                            break;
+                        case 2:
+                            userGoal = "Stress Relief";
+                            break;
+                        case 3:
+                            userGoal = "Weight Loss";
+                            break;
+                        default:
+                            System.out.println("Invalid choice. Please try again.");
+                            continue;
+                    }
+                    System.out.println("You selected: " + userGoal + ".");
+                    break;
+
+                case 2:
+                    if (userGoal.isEmpty()) {
+                        System.out.println("Please select a health goal first (Option 1).");
+                    } else {
+                        List<String> tips = healthTips.get(userGoal);
+                        String randomTip = tips.get(random.nextInt(tips.size()));
+                        System.out.println("\nHere is your health tip for " + userGoal + ":");
+                        System.out.println(randomTip);
+                    }
+                    break;
+
+                case 3:
+                    System.out.println("Thank you for using Daily Health Tips! Stay healthy!");
+                    scanner.close();
+                    return;
+
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+}
